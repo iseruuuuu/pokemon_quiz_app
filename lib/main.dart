@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pokemon_quiz_app/screen/home_screen.dart';
+import 'package:pokemon_quiz_app/screen/screen/home_screen/home_screen.dart';
 
 void main() {
   runApp(const MyApp());

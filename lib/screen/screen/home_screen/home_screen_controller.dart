@@ -7,6 +7,7 @@ import 'package:pokemon_quiz_app/model/list2.dart';
 import 'package:pokemon_quiz_app/model/list3.dart';
 import 'package:pokemon_quiz_app/model/list4.dart';
 import 'package:pokemon_quiz_app/model/list5.dart';
+import 'package:pokemon_quiz_app/screen/preference/storeage_service.dart';
 
 class HomeScreenController extends GetxController {
   //答えの名前
@@ -131,6 +132,7 @@ class HomeScreenController extends GetxController {
   }
 
   void onTapSubmit() {
+    addBlank();
     //TODO あっているかどうかを確認する
     checkAnswer();
 
@@ -152,10 +154,6 @@ class HomeScreenController extends GetxController {
   }
 
   void checkAnswer() {
-    //TODO 🟢　　　　青色にする true
-
-    //TODO ❌　　　　赤色にする。false
-
     if (answerOne.value == one.value) {
       isCorrect1.value = true;
     } else {
@@ -181,7 +179,40 @@ class HomeScreenController extends GetxController {
     } else {
       isCorrect5.value = false;
     }
-    //addList();
+    checkComplete();
+    addList();
+  }
+
+  void checkComplete() {
+    if (isCorrect1.value == true &&
+        isCorrect2.value == true &&
+        isCorrect3.value == true &&
+        isCorrect4.value == true &&
+        isCorrect5.value == true) {
+      onTapClear();
+    }
+  }
+
+  void onTapClear() {
+    //TODO
+  }
+
+  void addBlank() {
+    if (answerOne.value == '') {
+      answerOne.value = '　';
+    }
+    if (answerTwo.value == '') {
+      answerTwo.value = '　';
+    }
+    if (answerThree.value == '') {
+      answerThree.value = '　';
+    }
+    if (answerFour.value == '') {
+      answerFour.value = '　';
+    }
+    if (answerFive.value == '') {
+      answerFive.value = '　';
+    }
   }
 
   void addList() {

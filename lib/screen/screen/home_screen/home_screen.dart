@@ -1,15 +1,13 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:pokemon_quiz_app/screen/item/flick_keyboard/flick_keyboard.dart';
 import 'package:pokemon_quiz_app/screen/item/list/container_item.dart';
 import 'package:pokemon_quiz_app/screen/item/delete/delete_button.dart';
 import 'package:pokemon_quiz_app/screen/item/enter/enter_button.dart';
 import 'package:pokemon_quiz_app/screen/item/flick_keyboard/flick_keyboard_widget.dart';
 import 'package:pokemon_quiz_app/screen/item/keyboard/keyboard_widget.dart';
-
+import 'package:pokemon_quiz_app/screen/item/list/list_tile.dart';
 import 'home_screen_controller.dart';
-import 'item/flick_keyboard/flick_keyboard.dart';
-import 'item/list/container_item2.dart';
-import 'item/list/list_tile.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -17,6 +15,11 @@ class HomeScreen extends StatelessWidget {
     final double deviceHeight = MediaQuery.of(context).size.height;
     final double deviceWidth = MediaQuery.of(context).size.width;
     final controller = Get.put(HomeScreenController(), tag: '');
+    final pokemons1 = controller.pokemon;
+    final pokemons2 = controller.pokemon2;
+    final pokemons3 = controller.pokemon3;
+    final pokemons4 = controller.pokemon4;
+    final pokemons5 = controller.pokemon5;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -35,20 +38,26 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Expanded(
-              flex: 2,
+              flex: 4,
               child: Obx(
-                () => controller.pokemon.isNotEmpty
+                () => pokemons1.isNotEmpty
                     ? ListView.builder(
                         controller: ScrollController(),
-                        itemCount: controller.pokemon.length,
+                        itemCount: pokemons1.length,
                         itemExtent: 90,
                         itemBuilder: (BuildContext context, int index) {
-                          final pokemon = controller.pokemon[index];
-                          return Obx(
-                            () => ListTiles(
-                              index: index,
-                              pokemon: pokemon,
-                            ),
+                          final pokemon = pokemons1[index];
+                          final pokemon2 = pokemons2[index];
+                          final pokemon3 = pokemons3[index];
+                          final pokemon4 = pokemons4[index];
+                          final pokemon5 = pokemons5[index];
+                          return ListTiles(
+                            index: index,
+                            pokemon: pokemon,
+                            pokemon2: pokemon2,
+                            pokemon3: pokemon3,
+                            pokemon4: pokemon4,
+                            pokemon5: pokemon5,
                           );
                         },
                       )
@@ -57,42 +66,6 @@ class HomeScreen extends StatelessWidget {
                       ),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Obx(
-                  () => ContainerItem2(
-                    text: controller.answerOne2.value,
-                    isCollect: controller.isCorrect1.value,
-                  ),
-                ),
-                Obx(
-                  () => ContainerItem2(
-                    text: controller.answerTwo2.value,
-                    isCollect: controller.isCorrect2.value,
-                  ),
-                ),
-                Obx(
-                  () => ContainerItem2(
-                    text: controller.answerThree2.value,
-                    isCollect: controller.isCorrect3.value,
-                  ),
-                ),
-                Obx(
-                  () => ContainerItem2(
-                    text: controller.answerFour2.value,
-                    isCollect: controller.isCorrect4.value,
-                  ),
-                ),
-                Obx(
-                  () => ContainerItem2(
-                    text: controller.answerFive2.value,
-                    isCollect: controller.isCorrect5.value,
-                  ),
-                ),
-              ],
-            ),
-            Spacer(),
             const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -250,7 +223,7 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
             const SizedBox(
-              height: 30,
+              height: 50,
             ),
           ],
         ),

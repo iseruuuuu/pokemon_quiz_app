@@ -20,5 +20,6 @@ dev_dependencies:
   get: ^4.6.1
   four_swipe_direction: ^0.0.4
   holding_gesture:
+  shared_preferences: ^2.0.11
 flutter:
   uses-material-design: true
