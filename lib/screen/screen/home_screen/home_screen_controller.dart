@@ -60,7 +60,6 @@ class HomeScreenController extends GetxController {
     var rand = math.Random();
     var index = rand.nextInt(152);
     var pokemon = PokemonList[index];
-    print(pokemon);
     name.value = pokemon;
     one.value = pokemon[0];
     two.value = pokemon[1];
@@ -97,7 +96,9 @@ class HomeScreenController extends GetxController {
         break;
       case 4:
         answerFive.value = text;
+        counts++;
         break;
+      case 5:
       default:
         break;
     }
@@ -107,22 +108,24 @@ class HomeScreenController extends GetxController {
   void delete() {
     switch (counts) {
       case 0:
-        answerOne.value = '';
-        //counts--;
         break;
       case 1:
-        answerTwo.value = '';
+        answerOne.value = '';
         counts--;
         break;
       case 2:
-        answerThree.value = '';
+        answerTwo.value = '';
         counts--;
         break;
       case 3:
-        answerFour.value = '';
+        answerThree.value = '';
         counts--;
         break;
       case 4:
+        answerFour.value = '';
+        counts--;
+        break;
+      case 5:
         answerFive.value = '';
         counts--;
         break;
