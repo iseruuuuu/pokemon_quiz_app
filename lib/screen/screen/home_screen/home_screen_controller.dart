@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:pokemon_quiz_app/constant/pokemon_list.dart';
 import 'dart:math' as math;
-
 import 'package:pokemon_quiz_app/model/list.dart';
 import 'package:pokemon_quiz_app/model/list2.dart';
 import 'package:pokemon_quiz_app/model/list3.dart';
@@ -93,16 +92,6 @@ class HomeScreenController extends GetxController {
   }
 
   void delete() {
-    // if (cal.length != 0) {
-    //   //配列ができた。。。
-    //   cal.removeAt(cal.length - 1);
-    //   cal2.removeAt(cal2.length - 1);
-    //   // print(cal);
-    //   // print(cal2);
-    //   expression = cal.join('');
-    //   expression2.value = cal2.join('');
-    // }
-
     switch (counts) {
       case 0:
         answerOne.value = '';

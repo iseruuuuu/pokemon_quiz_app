@@ -4,16 +4,14 @@ import 'package:pokemon_quiz_app/screen/item/flick_keyboard/flick_keyboard.dart'
 import 'package:pokemon_quiz_app/screen/item/list/container_item.dart';
 import 'package:pokemon_quiz_app/screen/item/delete/delete_button.dart';
 import 'package:pokemon_quiz_app/screen/item/enter/enter_button.dart';
-import 'package:pokemon_quiz_app/screen/item/flick_keyboard/flick_keyboard_widget.dart';
-import 'package:pokemon_quiz_app/screen/item/keyboard/keyboard_widget.dart';
 import 'package:pokemon_quiz_app/screen/item/list/list_tile.dart';
 import 'home_screen_controller.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    final double deviceHeight = MediaQuery.of(context).size.height;
-    final double deviceWidth = MediaQuery.of(context).size.width;
     final controller = Get.put(HomeScreenController(), tag: '');
     final pokemons1 = controller.pokemon;
     final pokemons2 = controller.pokemon2;
@@ -24,7 +22,7 @@ class HomeScreen extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(50),
+          preferredSize: const Size.fromHeight(50),
           child: AppBar(
             backgroundColor: const Color(0xDD000000),
             title: Text(
@@ -46,24 +44,17 @@ class HomeScreen extends StatelessWidget {
                         itemCount: pokemons1.length,
                         itemExtent: 90,
                         itemBuilder: (BuildContext context, int index) {
-                          final pokemon = pokemons1[index];
-                          final pokemon2 = pokemons2[index];
-                          final pokemon3 = pokemons3[index];
-                          final pokemon4 = pokemons4[index];
-                          final pokemon5 = pokemons5[index];
                           return ListTiles(
                             index: index,
-                            pokemon: pokemon,
-                            pokemon2: pokemon2,
-                            pokemon3: pokemon3,
-                            pokemon4: pokemon4,
-                            pokemon5: pokemon5,
+                            pokemon: pokemons1[index],
+                            pokemon2: pokemons2[index],
+                            pokemon3: pokemons3[index],
+                            pokemon4: pokemons4[index],
+                            pokemon5: pokemons5[index],
                           );
                         },
                       )
-                    : Container(
-                        color: Colors.black12,
-                      ),
+                    : Container(),
               ),
             ),
             const Spacer(),
@@ -222,9 +213,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(
-              height: 50,
-            ),
+            const SizedBox(height: 50),
           ],
         ),
       ),
