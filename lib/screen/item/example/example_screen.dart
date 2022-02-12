@@ -12,12 +12,15 @@ class ExampleScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(ExampleScreenController(), tag: '');
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'ルール説明',
-          style: TextStyle(
-            fontSize: MediaQuery.of(context).size.width / 15,
-            fontWeight: FontWeight.bold,
+        Center(
+          child: Text(
+            'ルール説明',
+            style: TextStyle(
+              fontSize: MediaQuery.of(context).size.width / 15,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         const ExampleWidget(
@@ -32,15 +35,7 @@ class ExampleScreen extends StatelessWidget {
           isCollectThree: false,
           isCollectTwo: false,
         ),
-        const SizedBox(height: 20),
-        Text(
-          '青色は、位置と文字が正しいです',
-          style: TextStyle(
-            fontSize: MediaQuery.of(context).size.width / 25,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 10),
         const ExampleWidget(
           one: 'ナ',
           two: 'エ',
@@ -54,27 +49,6 @@ class ExampleScreen extends StatelessWidget {
           isCollectTwo: false,
         ),
         const SizedBox(height: 20),
-        Text(
-          'どの回答も正解が含まれません。',
-          style: TextStyle(
-            fontSize: MediaQuery.of(context).size.width / 25,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        Text(
-          '4文字以下の場合のポケモンも回答できます',
-          style: TextStyle(
-            fontSize: MediaQuery.of(context).size.width / 25,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        Text(
-          'キーボードの入力は日本語のキーボードを下にしています',
-          style: TextStyle(
-            fontSize: MediaQuery.of(context).size.width / 25,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
         Obx(
           () => ExampleWidget2(
             one: controller.answerOne.value,
@@ -88,12 +62,46 @@ class ExampleScreen extends StatelessWidget {
             onTap5: controller.onTap5,
           ),
         ),
-        Text(
-          '「ギ」・「ャ」・「ッ」・「プ」など'
-          '濁点や小書きは、対象をタップすることで変更できます',
-          style: TextStyle(
-            fontSize: MediaQuery.of(context).size.width / 25,
-            fontWeight: FontWeight.bold,
+        Padding(
+          padding:
+              const EdgeInsets.only(top: 10, bottom: 2, right: 10, left: 10),
+          child: Text(
+            '・青色は正解、赤色は不正解(図1)',
+            style: TextStyle(
+              fontSize: MediaQuery.of(context).size.width / 25,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          child: Text(
+            '・4文字以下の場合のポケモンも回答可能(図2)',
+            style: TextStyle(
+              fontSize: MediaQuery.of(context).size.width / 25,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          child: Text(
+            '・入力は日本語のキーボードになります',
+            style: TextStyle(
+              fontSize: MediaQuery.of(context).size.width / 25,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          child: Text(
+            '・濁点や小書きは、口をタップすることで変更可能(図3)',
+            style: TextStyle(
+              fontSize: MediaQuery.of(context).size.width / 27,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ],
