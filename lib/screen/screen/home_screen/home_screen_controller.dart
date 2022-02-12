@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pokemon_quiz_app/constant/pokemon_list.dart';
 import 'dart:math' as math;
@@ -6,6 +7,9 @@ import 'package:pokemon_quiz_app/model/list2.dart';
 import 'package:pokemon_quiz_app/model/list3.dart';
 import 'package:pokemon_quiz_app/model/list4.dart';
 import 'package:pokemon_quiz_app/model/list5.dart';
+import 'package:pokemon_quiz_app/screen/item/example/example_screen.dart';
+import 'package:slide_popup_dialog_null_safety/slide_popup_dialog.dart'
+    as slideDialog;
 
 class HomeScreenController extends GetxController {
   //答えの名前
@@ -48,6 +52,7 @@ class HomeScreenController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    openExplainDialog();
     getPokemon();
   }
 
@@ -62,6 +67,14 @@ class HomeScreenController extends GetxController {
     three.value = pokemon[2];
     four.value = pokemon[3];
     five.value = pokemon[4];
+  }
+
+  void openExplainDialog() async {
+    await Future.delayed(const Duration(seconds: 1));
+    slideDialog.showSlideDialog(
+      context: Get.overlayContext!,
+      child: const ExampleScreen(),
+    );
   }
 
   void numClick(String text) {
