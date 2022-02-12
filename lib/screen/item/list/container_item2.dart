@@ -13,9 +13,9 @@ class ContainerItem2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(5.0),
-      width: MediaQuery.of(context).size.width / 10,
-      height: MediaQuery.of(context).size.width / 10,
+      // padding: const EdgeInsets.all(5.0),
+      width: MediaQuery.of(context).size.width / 7,
+      height: MediaQuery.of(context).size.width / 7,
       decoration: BoxDecoration(
         color: isCollect ? Colors.blue : Colors.red,
         border: Border.all(color: Colors.black12),

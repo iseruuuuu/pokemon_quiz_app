@@ -8,6 +8,8 @@ import 'package:pokemon_quiz_app/model/list3.dart';
 import 'package:pokemon_quiz_app/model/list4.dart';
 import 'package:pokemon_quiz_app/model/list5.dart';
 import 'package:pokemon_quiz_app/screen/item/example/example_screen.dart';
+import 'package:pokemon_quiz_app/screen/screen/result_screen/result_screen.dart';
+import 'package:pokemon_quiz_app/screen/screen/result_screen/result_screen_controller.dart';
 import 'package:slide_popup_dialog_null_safety/slide_popup_dialog.dart'
     as slideDialog;
 
@@ -54,6 +56,14 @@ class HomeScreenController extends GetxController {
     super.onInit();
     openExplainDialog();
     getPokemon();
+
+    print(MediaQuery.of(Get.context!).size.height);
+    print(MediaQuery.of(Get.context!).size.height / 4.95);
+    print(MediaQuery.of(Get.context!).size.height / 2.5);
+    print(MediaQuery.of(Get.context!).size.height / 10);
+
+
+    print(926/2.5);
   }
 
   void getPokemon() {
@@ -197,8 +207,14 @@ class HomeScreenController extends GetxController {
     }
   }
 
-  void onTapClear() {
-    //TODO
+  void onTapClear() async {
+    //TODO　正解の合図を出す
+
+    //TODO　画面遷移をする。
+    await Future.delayed(const Duration(seconds: 2));
+
+    //前の画面に戻れないようにする。
+    Get.to(() => const ResultScreen());
   }
 
   void addBlank() {

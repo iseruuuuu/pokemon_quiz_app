@@ -7,8 +7,8 @@ import 'package:pokemon_quiz_app/screen/item/enter/enter_button.dart';
 import 'package:pokemon_quiz_app/screen/item/list/list_tile.dart';
 import 'home_screen_controller.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeScreen2 extends StatelessWidget {
+  const HomeScreen2({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(50),
+          preferredSize: const Size.fromHeight(0),
           child: AppBar(
             backgroundColor: const Color(0xDD000000),
             title: Text(
@@ -34,8 +34,8 @@ class HomeScreen extends StatelessWidget {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            SizedBox(
-              height: MediaQuery.of(context).size.height / 4,
+            Expanded(
+              flex: 4,
               child: Obx(
                 () => pokemons1.isNotEmpty
                     ? Container(
@@ -63,9 +63,8 @@ class HomeScreen extends StatelessWidget {
                       ),
               ),
             ),
-            SizedBox(
-              // height: MediaQuery.of(context).size.height / 4.95,
-              height: MediaQuery.of(context).size.height / 10,
+            Expanded(
+              flex: 2,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -112,8 +111,8 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              height: MediaQuery.of(context).size.height / 2.5,
+            Expanded(
+              flex: 7,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -224,7 +223,7 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 50),
+            const SizedBox(height: 10),
           ],
         ),
       ),

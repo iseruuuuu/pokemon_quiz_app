@@ -27,9 +27,8 @@ class ListTiles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final controller = Get.put(Controller(), tag: '');
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ContainerItem2(
           text: pokemon.word,
