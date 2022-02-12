@@ -7,7 +7,6 @@ import 'package:pokemon_quiz_app/model/list2.dart';
 import 'package:pokemon_quiz_app/model/list3.dart';
 import 'package:pokemon_quiz_app/model/list4.dart';
 import 'package:pokemon_quiz_app/model/list5.dart';
-import 'package:pokemon_quiz_app/screen/preference/storeage_service.dart';
 
 class HomeScreenController extends GetxController {
   //答えの名前
