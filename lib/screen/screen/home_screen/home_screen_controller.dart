@@ -37,6 +37,12 @@ class HomeScreenController extends GetxController {
   var isCorrect4 = false.obs;
   var isCorrect5 = false.obs;
 
+  var isYellow1 = false.obs;
+  var isYellow2 = false.obs;
+  var isYellow3 = false.obs;
+  var isYellow4 = false.obs;
+  var isYellow5 = false.obs;
+
   var answerOne2 = ''.obs;
   var answerTwo2 = ''.obs;
   var answerThree2 = ''.obs;
@@ -62,8 +68,7 @@ class HomeScreenController extends GetxController {
     print(MediaQuery.of(Get.context!).size.height / 2.5);
     print(MediaQuery.of(Get.context!).size.height / 10);
 
-
-    print(926/2.5);
+    print(926 / 2.5);
   }
 
   void getPokemon() {
@@ -169,6 +174,7 @@ class HomeScreenController extends GetxController {
   }
 
   void checkAnswer() {
+    //TODO 赤or青の処理
     if (answerOne.value == one.value) {
       isCorrect1.value = true;
     } else {
@@ -198,6 +204,7 @@ class HomeScreenController extends GetxController {
     addList();
   }
 
+  //TODO 成功かどうかのチェック
   void checkComplete() {
     if (isCorrect1.value == true &&
         isCorrect2.value == true &&
@@ -208,16 +215,17 @@ class HomeScreenController extends GetxController {
     }
   }
 
+  //TODO 正解した時の処理
   void onTapClear() async {
     //TODO　正解の合図を出す
 
-    //TODO　画面遷移をする。
+    //少し遅らせる。
     await Future.delayed(const Duration(seconds: 2));
-
-    //前の画面に戻れないようにする。
+    //TODO  画面遷移 (前の画面に戻れないようにする)
     Get.to(() => const ResultScreen());
   }
 
+  //TODO 空欄だった時の処理
   void addBlank() {
     if (answerOne.value == '') {
       answerOne.value = '　';
@@ -236,33 +244,39 @@ class HomeScreenController extends GetxController {
     }
   }
 
+  //TODO リストに入れてあげるため
   void addList() {
     final pokemons1 = Pokemon(
       id: 0,
       word: answerOne.value,
       isCollect: isCorrect1.value,
+      isYellow: isYellow1.value,
     );
     final pokemons2 = Pokemon2(
       id: 0,
       word: answerTwo.value,
       isCollect: isCorrect2.value,
+      isYellow: isYellow2.value,
     );
     final pokemons3 = Pokemon3(
       id: 0,
       word: answerThree.value,
       isCollect: isCorrect3.value,
+      isYellow: isYellow3.value,
     );
 
     final pokemons4 = Pokemon4(
       id: 0,
       word: answerFour.value,
       isCollect: isCorrect4.value,
+      isYellow: isYellow4.value,
     );
 
     final pokemons5 = Pokemon5(
       id: 0,
       word: answerFive.value,
       isCollect: isCorrect5.value,
+      isYellow: isYellow5.value,
     );
 
     pokemon.add(pokemons1);
@@ -272,6 +286,7 @@ class HomeScreenController extends GetxController {
     pokemon5.add(pokemons5);
   }
 
+  //TODO 濁点や小書きのため
   void changeWord1() {
     if (answerOne.value == 'ア') {
       answerOne.value = 'ァ';
@@ -1046,4 +1061,46 @@ class HomeScreenController extends GetxController {
       answerFive.value = 'ヨ';
     }
   }
+
+//未実装
+// void checkYellow() {
+//   //TODO 黄色の処理
+//   if (answerOne.value == two.value ||
+//       answerOne.value == three.value ||
+//       answerOne.value == four.value ||
+//       answerOne.value == five.value) {
+//     //TODO 言葉は合っているが、位置が間違っている。
+//     isYellow1.value = true;
+//   }
+//
+//   if (answerTwo.value == one.value ||
+//       answerTwo.value == three.value ||
+//       answerTwo.value == four.value ||
+//       answerTwo.value == five.value) {
+//     //TODO 言葉は合っているが、位置が間違っている。
+//     isYellow2.value = true;
+//   }
+//
+//   if (answerThree.value == one.value ||
+//       answerThree.value == two.value ||
+//       answerThree.value == four.value ||
+//       answerThree.value == five.value) {
+//     //TODO 言葉は合っているが、位置が間違っている。
+//     isYellow3.value = true;
+//   }
+//
+//   if (answerFour.value == one.value ||
+//       answerFour.value == two.value ||
+//       answerFour.value == three.value ||
+//       answerFour.value == five.value) {
+//     //TODO 言葉は合っているが、位置が間違っている。
+//     isYellow4.value = true;
+//   }
+//   if (answerFive.value == one.value ||
+//       answerFive.value == two.value ||
+//       answerFive.value == three.value ||
+//       answerFive.value == four.value) {
+//     //TODO 言葉は合っているが、位置が間違っている。
+//     isYellow5.value = true;
+//   }
 }

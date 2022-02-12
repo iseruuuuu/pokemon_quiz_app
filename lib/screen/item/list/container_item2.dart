@@ -5,10 +5,12 @@ class ContainerItem2 extends StatelessWidget {
     Key? key,
     required this.text,
     required this.isCollect,
+    required this.isYellow,
   }) : super(key: key);
 
   final String text;
   final bool isCollect;
+  final bool isYellow;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,12 @@ class ContainerItem2 extends StatelessWidget {
       width: MediaQuery.of(context).size.width / 7,
       height: MediaQuery.of(context).size.width / 7,
       decoration: BoxDecoration(
-        color: isCollect ? Colors.blue : Colors.red,
+        color: isCollect
+            ? Colors.blue
+            //: Colors.red,
+            : isYellow
+                ? Colors.yellow
+                : Colors.red,
         border: Border.all(color: Colors.black12),
         borderRadius: BorderRadius.circular(10),
       ),

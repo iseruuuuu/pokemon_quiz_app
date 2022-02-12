@@ -33,22 +33,27 @@ class ListTiles extends StatelessWidget {
         ContainerItem2(
           text: pokemon.word,
           isCollect: pokemon.isCollect,
+          isYellow: pokemon.isYellow,
         ),
         ContainerItem2(
           text: pokemon2.word,
           isCollect: pokemon2.isCollect,
+          isYellow: pokemon2.isYellow,
         ),
         ContainerItem2(
           text: pokemon3.word,
           isCollect: pokemon3.isCollect,
+          isYellow: pokemon3.isYellow,
         ),
         ContainerItem2(
           text: pokemon4.word,
           isCollect: pokemon4.isCollect,
+          isYellow: pokemon4.isYellow,
         ),
         ContainerItem2(
           text: pokemon5.word,
           isCollect: pokemon5.isCollect,
+          isYellow: pokemon5.isYellow,
         ),
       ],
     );
