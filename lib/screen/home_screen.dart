@@ -1,11 +1,15 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:pokemon_quiz_app/screen/item/container_item.dart';
+import 'package:pokemon_quiz_app/screen/item/list/container_item.dart';
+import 'package:pokemon_quiz_app/screen/item/delete/delete_button.dart';
+import 'package:pokemon_quiz_app/screen/item/enter/enter_button.dart';
 import 'package:pokemon_quiz_app/screen/item/flick_keyboard/flick_keyboard_widget.dart';
 import 'package:pokemon_quiz_app/screen/item/keyboard/keyboard_widget.dart';
 
 import 'home_screen_controller.dart';
 import 'item/flick_keyboard/flick_keyboard.dart';
+import 'item/list/container_item2.dart';
+import 'item/list/list_tile.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -17,61 +21,125 @@ class HomeScreen extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(0),
+          preferredSize: Size.fromHeight(50),
           child: AppBar(
-            backgroundColor: Color(0xDD000000),
+            backgroundColor: const Color(0xDD000000),
+            title: Text(
+              controller.name.value,
+              style: const TextStyle(color: Colors.white),
+            ),
           ),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
+            Expanded(
+              flex: 2,
+              child: Obx(
+                () => controller.pokemon.isNotEmpty
+                    ? ListView.builder(
+                        controller: ScrollController(),
+                        itemCount: controller.pokemon.length,
+                        itemExtent: 90,
+                        itemBuilder: (BuildContext context, int index) {
+                          final pokemon = controller.pokemon[index];
+                          return Obx(
+                            () => ListTiles(
+                              index: index,
+                              pokemon: pokemon,
+                            ),
+                          );
+                        },
+                      )
+                    : Container(
+                        color: Colors.black12,
+                      ),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Obx(
+                  () => ContainerItem2(
+                    text: controller.answerOne2.value,
+                    isCollect: controller.isCorrect1.value,
+                  ),
+                ),
+                Obx(
+                  () => ContainerItem2(
+                    text: controller.answerTwo2.value,
+                    isCollect: controller.isCorrect2.value,
+                  ),
+                ),
+                Obx(
+                  () => ContainerItem2(
+                    text: controller.answerThree2.value,
+                    isCollect: controller.isCorrect3.value,
+                  ),
+                ),
+                Obx(
+                  () => ContainerItem2(
+                    text: controller.answerFour2.value,
+                    isCollect: controller.isCorrect4.value,
+                  ),
+                ),
+                Obx(
+                  () => ContainerItem2(
+                    text: controller.answerFive2.value,
+                    isCollect: controller.isCorrect5.value,
+                  ),
+                ),
+              ],
+            ),
+            Spacer(),
+            const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Obx(
-                  () => ContainerItem(
-                    text: controller.answerOne.value,
+                  () => GestureDetector(
+                    onTap: controller.changeWord1,
+                    child: ContainerItem(
+                      text: controller.answerOne.value,
+                    ),
                   ),
                 ),
                 Obx(
-                  () => ContainerItem(
-                    text: controller.answerTwo.value,
+                  () => GestureDetector(
+                    onTap: controller.changeWord2,
+                    child: ContainerItem(
+                      text: controller.answerTwo.value,
+                    ),
                   ),
                 ),
                 Obx(
-                  () => ContainerItem(
-                    text: controller.answerThree.value,
+                  () => GestureDetector(
+                    onTap: controller.changeWord3,
+                    child: ContainerItem(
+                      text: controller.answerThree.value,
+                    ),
                   ),
                 ),
                 Obx(
-                  () => ContainerItem(
-                    text: controller.answerFour.value,
+                  () => GestureDetector(
+                    onTap: controller.changeWord4,
+                    child: ContainerItem(
+                      text: controller.answerFour.value,
+                    ),
                   ),
                 ),
                 Obx(
-                  () => ContainerItem(
-                    text: controller.answerFive.value,
+                  () => GestureDetector(
+                    onTap: controller.changeWord5,
+                    child: ContainerItem(
+                      text: controller.answerFive.value,
+                    ),
                   ),
                 ),
               ],
             ),
-            Spacer(),
-            // KeyboardWidget(),
-
-            Spacer(),
-            Row(
-              children: [
-                Text(controller.one.value),
-                Text(controller.two.value),
-                Text(controller.three.value),
-                Text(controller.four.value),
-                Text(controller.five.value),
-              ],
-            ),
-            Spacer(),
-
-            // FlickKeyboardWidget(),
+            const SizedBox(height: 20),
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -163,9 +231,8 @@ class HomeScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 5,
-                      height: MediaQuery.of(context).size.width / 5,
+                    EnterButton(
+                      onTap: controller.onTapSubmit,
                     ),
                     FlickKeyboard(
                       text: 'ワ',
@@ -174,9 +241,9 @@ class HomeScreen extends StatelessWidget {
                       swipeUp: () => controller.numClick('ン'),
                       swipeRight: () => controller.numClick('ー'),
                     ),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width / 5,
-                      height: MediaQuery.of(context).size.width / 5,
+                    DeleteButton(
+                      onHold: controller.delete,
+                      onTap: controller.delete,
                     ),
                   ],
                 ),

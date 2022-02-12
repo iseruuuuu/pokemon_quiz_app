@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:holding_gesture/holding_gesture.dart';
 
 class DeleteButton extends StatelessWidget {
   const DeleteButton({
@@ -13,7 +14,7 @@ class DeleteButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 1, bottom: 1, right: 0, left: 0),
+      margin: const EdgeInsets.only(top: 1, bottom: 1, right: 0, left: 0),
       child: SizedBox(
         width: MediaQuery.of(context).size.width / 5,
         height: MediaQuery.of(context).size.width / 5,
@@ -37,8 +38,8 @@ class DeleteButton extends StatelessWidget {
                     // fontSize: 50,
                   ),
                 ),
-                color: Color(0xff888888),
-                textColor: Color(0xFF000000),
+                color: Colors.orange,
+                textColor: Colors.white,
               ),
             ),
           ),
