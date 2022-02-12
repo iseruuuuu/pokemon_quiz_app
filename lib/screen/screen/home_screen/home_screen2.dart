@@ -38,29 +38,23 @@ class HomeScreen2 extends StatelessWidget {
               flex: 4,
               child: Obx(
                 () => pokemons1.isNotEmpty
-                    ? Container(
-                        //TODO 後で戻す
-                        color: Colors.black12,
-                        child: ListView.builder(
-                          controller: ScrollController(),
-                          itemCount: pokemons1.length,
-                          itemExtent: 70,
-                          reverse: false,
-                          itemBuilder: (BuildContext context, int index) {
-                            return ListTiles(
-                              index: index,
-                              pokemon: pokemons1[index],
-                              pokemon2: pokemons2[index],
-                              pokemon3: pokemons3[index],
-                              pokemon4: pokemons4[index],
-                              pokemon5: pokemons5[index],
-                            );
-                          },
-                        ),
-                      )
-                    : Container(
-                        color: Colors.black12,
-                      ),
+                    ? ListView.builder(
+                      controller: ScrollController(),
+                      itemCount: pokemons1.length,
+                      itemExtent: 70,
+                      reverse: false,
+                      itemBuilder: (BuildContext context, int index) {
+                        return ListTiles(
+                          index: index,
+                          pokemon: pokemons1[index],
+                          pokemon2: pokemons2[index],
+                          pokemon3: pokemons3[index],
+                          pokemon4: pokemons4[index],
+                          pokemon5: pokemons5[index],
+                        );
+                      },
+                    )
+                    : Container(),
               ),
             ),
             Expanded(
@@ -112,7 +106,7 @@ class HomeScreen2 extends StatelessWidget {
               ),
             ),
             Expanded(
-              flex: 7,
+              flex: 6,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

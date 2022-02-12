@@ -9,30 +9,50 @@ class TitleScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(TitleScreenController(), tag: '');
     return Scaffold(
-      appBar: AppBar(),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const Spacer(),
+            // Text(
+            //   'POKEMON WORDLE',
+            //   style: TextStyle(
+            //     fontWeight: FontWeight.bold,
+            //     fontSize: MediaQuery.of(context).size.width / 11,
+            //     color: Colors.green,
+            //   ),
+            // ),
             Text(
-              'POKEMON WORDLE',
+              '　POKEMON　　　',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: MediaQuery.of(context).size.width / 11,
+                fontSize: MediaQuery.of(context).size.width / 9,
                 color: Colors.green,
               ),
             ),
-            ElevatedButton(
-              onPressed: controller.onTapStart,
-              child: Text(
-                'Game Start',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: MediaQuery.of(context).size.width / 11,
-                  color: Colors.white,
-                ),
+            Text(
+              '　　　WORDLE',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: MediaQuery.of(context).size.width / 9,
+                color: Colors.green,
               ),
             ),
+            SizedBox(
+              height: MediaQuery.of(context).size.width / 1.8,
+              child: Image.asset('assets/ball.png'),
+            ),
+            const Spacer(),
+
+            IconButton(
+              onPressed: controller.onTapStart,
+              iconSize: 100,
+              icon: const Icon(
+                Icons.play_arrow,
+                color: Colors.blueAccent,
+              ),
+            ),
+            const Spacer(),
           ],
         ),
       ),

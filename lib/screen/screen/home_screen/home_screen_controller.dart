@@ -71,6 +71,7 @@ class HomeScreenController extends GetxController {
     var index = rand.nextInt(152);
     var pokemon = PokemonList[index];
     name.value = pokemon;
+    print(pokemon);
     one.value = pokemon[0];
     two.value = pokemon[1];
     three.value = pokemon[2];
